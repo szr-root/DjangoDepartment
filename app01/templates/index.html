@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="box">
+        <form autocomplete="off" action="/login/" method="post">
+            <h2>Sign in</h2>
+            {% csrf_token %}
+            <div class="inputBox">
+                <input type="text" required="required" name="user">
+                <span>UserName</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="pwd">
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="#">Forgot Password ?</a>
+                <a href="/register/">Signup</a>
+            </div>
+            <input type="submit" value="Login">
+            <span style="color: red;font-size: 14px">{{ msg }}</span>
+        </form>
+    </div>
+
+{% endblock %}

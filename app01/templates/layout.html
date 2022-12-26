@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% block css %}
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
     <style>
         .navbar {
             border-radius: 0;
         }
     </style>
+    {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-default">

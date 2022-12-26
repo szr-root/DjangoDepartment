@@ -18,6 +18,8 @@ from django.urls import path
 from app01 import views
 
 urlpatterns = [
+    path('', views.index),
+
     # 部门管理
     path('depart/list/', views.depart_list),
     path('depart/add/', views.depart_add),
