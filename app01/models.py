@@ -62,3 +62,33 @@ class PrettyNum(models.Model):
         (2, '未占用')
     )
     status = models.SmallIntegerField(verbose_name='状态', choices=status_choices, default=2)
+
+class Task(models.Model):
+    """ 任务 """
+    level_choices = (
+        (1, "紧急"),
+        (2, "重要"),
+        (3, "临时"),
+    )
+    level = models.SmallIntegerField(verbose_name="级别", choices=level_choices, default=1)
+    title = models.CharField(verbose_name="标题", max_length=64)
+    detail = models.TextField(verbose_name="详细信息")
+
+    # user_id
+    user = models.ForeignKey(verbose_name="负责人", to="Admin", on_delete=models.CASCADE)
+
+
+class Order(models.Model):
+    """ 订单 """
+    oid = models.CharField(verbose_name="订单号", max_length=64)
+    title = models.CharField(verbose_name="名称", max_length=32)
+    price = models.IntegerField(verbose_name="价格")
+
+    status_choices = (
+        (1, "待支付"),
+        (2, "已支付"),
+    )
+    status = models.SmallIntegerField(verbose_name="状态", choices=status_choices, default=1)
+    # admin_id
+    admin = models.ForeignKey(verbose_name="管理员", to="Admin", on_delete=models.CASCADE)
+
